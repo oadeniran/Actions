@@ -23,4 +23,4 @@ jobs:
     steps:
       - name : Just run
         run:
-          echo "This action runs because the pull request contains Fist in the label"
+          echo "This action runs because the pull request contains First in the label"
