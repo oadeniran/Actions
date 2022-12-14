@@ -1,0 +1,26 @@
+name: Sample workflow
+
+# This workflow just checks if the lable of the pull request is correct
+# This will run every time we create a branch or tag
+# You can check out https://docs.github.com/en/actions/learn-github-actions/events-that-trigger-workflows
+on:
+  workflow_dispatch:
+  pull_request:
+    types:
+      - opened
+      - reopened
+permissions:
+  # Need `contents: read` to checkout the repository
+  # Need `contents: write` to update the step metadata
+  contents: read
+
+jobs:
+  only-job:
+    runs-on: ubuntu-latest
+    # This will only run if the label of the pull request 
+    if: contains(github.event.pull_request.labels.*.name, 'First')
+    
+    steps:
+      - name : Just run
+        run:
+          echo "This action runs because the pull request contains Fist in the label"
